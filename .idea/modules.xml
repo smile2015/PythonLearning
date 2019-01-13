@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Automation/.idea/Automation.iml" filepath="$PROJECT_DIR$/../Automation/.idea/Automation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Documents/.idea/Documents.iml" filepath="$PROJECT_DIR$/../Documents/.idea/Documents.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PythonDemo/.idea/PythonDemo.iml" filepath="$PROJECT_DIR$/../PythonDemo/.idea/PythonDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PythonLearning.iml" filepath="$PROJECT_DIR$/.idea/PythonLearning.iml" />
+      <module fileurl="file://C:\Users\Administrator\PycharmProjects\TestDemo\.idea\TestDemo.iml" filepath="C:\Users\Administrator\PycharmProjects\TestDemo\.idea\TestDemo.iml" />
+    </modules>
+  </component>
+</project>
