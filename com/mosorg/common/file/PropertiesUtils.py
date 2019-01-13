@@ -17,6 +17,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+import re
+import os
+import tempfile
+
 '''
 自动加载pythonSripts/目录下的properties
 '''
@@ -28,6 +32,9 @@ class PropertiesUtils:
     def __init__(self, file_name):
         self.file_name = file_name
         self.properties = {}
+        self.loadProperties()
+
+    def loadProperties1(self):
         try:
             fopen = open(self.file_name, 'r')
             for line in fopen:
@@ -39,6 +46,14 @@ class PropertiesUtils:
             raise e
         else:
             fopen.close()
+
+    def loadProperties(self):
+        with open(self.file_name, 'r') as fopen:
+            for line in fopen.readlines():
+                line = line.strip() # 把末尾的'\n'删掉
+                if line.find('=') > 0 and not line.startswith('#'):
+                    strs = line.split('=')
+                    self.properties[strs[0].strip()] = strs[1].strip()
 
     def has_key(self, key):
         return key in self.properties
