@@ -13,9 +13,11 @@
 __author__ = 'Administrator'
 
 import sys
-
 reload(sys)
-sys.setdefaultencoding('utf8')
+default_encoding="utf-8"
+if(default_encoding!=sys.getdefaultencoding()):
+    reload(sys)
+    sys.setdefaultencoding(default_encoding)
 
 import re
 import os
