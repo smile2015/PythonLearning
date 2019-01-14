@@ -144,6 +144,7 @@ class XmlUtils:
     #
     # @param rootNode
     def createNewXml(self,rootNode):
+        #格式化XML
         self.indent(rootNode)
         self.tree = ET.ElementTree(rootNode)
 
