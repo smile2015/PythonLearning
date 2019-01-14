@@ -143,9 +143,10 @@ class XmlUtils:
     # Create new XML
     #
     # @param rootNode
-    def createNewXml(self,rootNode):
-        #格式化XML
-        self.indent(rootNode)
+    def createNewXml(self,rootNode,isFormatXML=False):
+        if isFormatXML:
+            #格式化XML
+            self.indent(rootNode)
         self.tree = ET.ElementTree(rootNode)
 
     ##
