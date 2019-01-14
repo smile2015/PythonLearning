@@ -126,7 +126,7 @@ shutil.copy("C:\\a\\1.txt","C:\\b")
 shutil.copy("C:\\a\\2.txt","C:\\b\\121.txt")
 '''
 #复制整个目录(备份)
-shutil.copy(filedir,"D:\\notes\\")
+#shutil.copy(filedir,"D:\\notes\\")
 
 '''
 #删除文件
