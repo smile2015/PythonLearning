@@ -155,10 +155,10 @@ class XmlUtils:
     # @param file_path
     # @param mode .
     # @param encoding
-    def saveXml(self,file_path,mode="w",encoding="utf-8"):
+    def saveXml(self,file_path,mode="w",encoding="utf-8",xml_declaration=True):
         fopen=self.fileUtils.open_file(file_path,mode)
         #xml_declaration=True  --指定xml头。如：<?xml version='1.0' encoding='utf-8'?>
-        self.tree.write(fopen, encoding, xml_declaration=True)
+        self.tree.write(fopen, encoding, xml_declaration)
         self.fileUtils.close_file()
 
     ##
