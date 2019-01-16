@@ -57,19 +57,6 @@ class PropertiesUtils:
                     strs = line.split('=')
                     self.properties[strs[0].strip()] = strs[1].strip()
 
-    def loadProperties1(self):
-        seek = 0
-        while True:
-            with open(self.file_name, 'r') as fopen:
-                line=fopen.readlines()
-                line = line.strip()  # 把末尾的'\n'删掉
-                if line.find('=') > 0 and not line.startswith('#'):
-                    seek = fopen.tell
-                    strs = line.split('=')
-                    yield line
-                    self.properties[strs[0].strip()] = strs[1].strip()
-                else:
-                    break
 
     def has_key(self, key):
         return key in self.properties
