@@ -29,37 +29,11 @@ import MySQLdb
 class MySQLHelper:
 
     def __init__(self):
-        __host=None
-        __port=3306
-        __user=None
-        __pwd=None
-        __dbname=None
-        __charset="utf8"
         __cursor = None
         __conn = None
 
-    def connetMySQL(self,host=None,user=None,pwd=None,dbname=None,port=3306,encoding="utf8"):
-        if None!=host and ""!=host:
-            self.__host=host
-        if None !=port and ""!=host:
-            self.__port=port
-        if None !=user and "" !=user:
-            self.__user=user
-        if None !=pwd and ""!=pwd:
-            self.__pwd=pwd
-        if None!=dbname and ""!=dbname:
-            self.__dbname=dbname
-        if None !=encoding and ""!=encoding:
-            self.__charset=encoding
-
-        self.__conn= MySQLdb.connect(
-            self.__host,
-            self.__user,
-            self.__pwd,
-            self.__dbname,
-            self.__port,
-            self.__charset
-        )
+    def connetMySQL(self,host=None,user=None,pwd=None,dbname=None,port=3306,charset="utf8"):
+        self.__conn= MySQLdb.connect(host,user,pwd,dbname,port,charset)
         return self.__conn
 
     def getCursor(self):
