@@ -48,6 +48,9 @@ class FileUtils:
     def getCurrentPath(self):
         return os.getcwd()
 
+    def getWorkDir(self):
+        return os.path.dirname(os.path.abspath(__file__))
+
     def getAbsPath(self,offset='.'):
         print os.path.abspath(offset)
         return os.path.abspath(offset)
