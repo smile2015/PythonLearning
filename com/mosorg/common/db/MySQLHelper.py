@@ -49,13 +49,5 @@ class MySQLHelper:
     def getCursor(self):
         return self.__conn.cursor()
 
-    def closeConnet(self):
-        self.__conn.close()
-        if None == self.__conn:
-            print "Close to database success."
-            return self.__conn
-        else:
-            raise "Close to database fail. "
-
 if __name__ == '__main__':
     pass
