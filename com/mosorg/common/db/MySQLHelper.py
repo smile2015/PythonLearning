@@ -29,46 +29,77 @@ import MySQLdb
 class MySQLHelper:
 
     def __init__(self):
-        self.host=None
-        self.port=3306
-        self.user=None
-        self.pwd=None
-        self.dbname=None
-        self.charset="utf8"
-        self.conn=None
-        self.cursor=None
+        __host=None
+        __port=3306
+        __user=None
+        __pwd=None
+        __dbname=None
+        __charset="utf8"
+        __cursor = None
+        __conn = None
 
     def connetMySQL(self,host=None,user=None,pwd=None,dbname=None,port=3306,encoding="utf8"):
         if None!=host and ""!=host:
-            self.host=host
+            self.__host=host
         if None !=port and ""!=host:
-            self.port=port
+            self.__port=port
         if None !=user and "" !=user:
-            self.user=user
+            self.__user=user
         if None !=pwd and ""!=pwd:
-            self.pwd=pwd
+            self.__pwd=pwd
         if None!=dbname and ""!=dbname:
-            self.dbname=dbname
+            self.__dbname=dbname
         if None !=encoding and ""!=encoding:
-            self.charset=encoding
+            self.__charset=encoding
 
-        self.conn= MySQLdb.connect(
-            self.host,
-            self.user,
-            self.pwd,
-            self.dbname,
-            self.port,
-            self.charset
+        self.__conn= MySQLdb.connect(
+            self.__host,
+            self.__user,
+            self.__pwd,
+            self.__dbname,
+            self.__port,
+            self.__charset
         )
+        return self.__conn
 
     def getCursor(self):
-        self.cursor=self.conn.cursor()
+        self.__cursor=self.__conn.cursor()
+        return self.__cursor
 
-    def closeCursor(self):
-        self.cursor.close()
+    def execute(self,sql,args=None):
+
+        try:
+            self.getCursor()
+            print self.__cursor
+            # 执行sql语句
+            result=self.__cursor.execute(sql,args)
+            print  result
+            # 提交到数据库执行
+            self.__conn.commit()
+        except Exception as e:
+            # Rollback in case there is any error
+            self.__conn.rollback()
+
+    def fetchall(self,sql,args=None):
+        try:
+            self.execute(sql,args)
+            return self.__cursor.fetchall()
+        except Exception as e:
+            print "=======Exception"
+            self.closeConnet()
+
+    def getOneData(self,sql):
+        self.getCursor()
+        print self.__cursor
+        # 执行sql语句
+        self.__cursor.execute(sql)
+        # 使用 fetchone() 方法获取一条数据
+        data = self.__cursor.fetchone()
+
+        print "Database version : %s " % data
 
     def closeConnet(self):
-        self.conn.close()
+        self.__conn.close()
 
 if __name__ == '__main__':
     pass
