@@ -105,49 +105,29 @@ def replace_property(file_name, from_regex, to_str, append_on_not_exists=True):
     else:
         print "file %s not found" % file_name
 
-path="C:\\Config\\global.properties"
+if __name__ == '__main__':
+    # 测试
+
+    path="C:\\Config\\global.properties"
+    pro = PropertiesUtils(path)
+
+    filedir = pro.get("path")
+
+    print filedir
+
+    filelist = os.listdir(filedir)
+    print str(filelist)
+
+    path = "C:\\Users\\Administrator\\PycharmProjects\\GitHub\\PythonDemo\\config\\db.properties"
+
+    pro = PropertiesUtils(path)
+    value = pro.get("host")
+    print value
+    value = pro.get("user")
+    print value
 
 
-pro = parse(path)
-
-filedir = pro.get("path")
-
-print filedir
-
-filelist = os.listdir(filedir)
-print str(filelist)
-
-import shutil
 
 
-'''
-#复制单个文件
-shutil.copy("C:\\a\\1.txt","C:\\b")
-#复制并重命名新文件
-shutil.copy("C:\\a\\2.txt","C:\\b\\121.txt")
-'''
-#复制整个目录(备份)
-#shutil.copy(filedir,"D:\\notes\\")
 
-'''
-#删除文件
-os.unlink("C:\\b\\1.txt")
-os.unlink("C:\\b\\121.txt")
-#删除空文件夹
-try:
-    os.rmdir("C:\\b\\new_a")
-except Exception as ex:
-    print("错误信息："+str(ex))#提示：错误信息，目录不是空的
-#删除文件夹及内容
-shutil.rmtree("C:\\b\\new_a")
 
-#移动文件
-shutil.move("C:\\a\\1.txt","C:\\b")
-#移动文件夹
-shutil.move("C:\\a\\c","C:\\b")
-
-#重命名文件
-shutil.move("C:\\a\\2.txt","C:\\a\\new2.txt")
-#重命名文件夹
-shutil.move("C:\\a\\d","C:\\a\\new_d")
-'''

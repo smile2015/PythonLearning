@@ -182,3 +182,5 @@ class XmlUtils:
                 rootNode.tail = i
 
 
+if __name__ == '__main__':
+    pass
