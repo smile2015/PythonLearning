@@ -29,51 +29,33 @@ import MySQLdb
 class MySQLHelper:
 
     def __init__(self):
-        __cursor = None
         __conn = None
 
-    def connetMySQL(self,host=None,user=None,pwd=None,dbname=None,port=3306,charset="utf8"):
-        self.__conn= MySQLdb.connect(host,user,pwd,dbname,port,charset)
-        return self.__conn
+    def connetMySQL(self,host=None,user=None,pwd=None,port=3306,charset="utf8"):
+        self.__conn = MySQLdb.connect(
+            host=host,
+            port=port,
+            user=user,
+            passwd=pwd,
+            charset=charset
+        )
+        if None != self.__conn:
+            print "Connect to database success.[%s]"%host
+            return self.__conn
+        else:
+            raise "Connect to database fail. [%s]"%host
+
 
     def getCursor(self):
-        self.__cursor=self.__conn.cursor()
-        return self.__cursor
-
-    def execute(self,sql,args=None):
-
-        try:
-            self.getCursor()
-            print self.__cursor
-            # 执行sql语句
-            result=self.__cursor.execute(sql,args)
-            print  result
-            # 提交到数据库执行
-            self.__conn.commit()
-        except Exception as e:
-            # Rollback in case there is any error
-            self.__conn.rollback()
-
-    def fetchall(self,sql,args=None):
-        try:
-            self.execute(sql,args)
-            return self.__cursor.fetchall()
-        except Exception as e:
-            print "=======Exception"
-            self.closeConnet()
-
-    def getOneData(self,sql):
-        self.getCursor()
-        print self.__cursor
-        # 执行sql语句
-        self.__cursor.execute(sql)
-        # 使用 fetchone() 方法获取一条数据
-        data = self.__cursor.fetchone()
-
-        print "Database version : %s " % data
+        return self.__conn.cursor()
 
     def closeConnet(self):
         self.__conn.close()
+        if None == self.__conn:
+            print "Close to database success."
+            return self.__conn
+        else:
+            raise "Close to database fail. "
 
 if __name__ == '__main__':
     pass
