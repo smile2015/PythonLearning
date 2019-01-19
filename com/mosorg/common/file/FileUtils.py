@@ -26,6 +26,10 @@ if (default_encoding != sys.getdefaultencoding()):
 class FileUtils:
 
     def __init__(self):
+        """
+
+        :rtype: object
+        """
         self.file=None
 
     def open_file(self,file_path,mode=None):

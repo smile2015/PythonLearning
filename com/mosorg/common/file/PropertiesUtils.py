@@ -63,7 +63,9 @@ class PropertiesUtils:
 
     def get(self, key, default_value=''):
         if key in self.properties:
-            return self.properties[key]
+            default_value=self.properties[key]
+            #print default_value
+            return default_value
         return default_value
 
     def put(self, key, value):
