@@ -31,12 +31,13 @@ class MySQLHelper:
     def __init__(self):
         __conn = None
 
-    def connetMySQL(self,host=None,user=None,pwd=None,port=3306,charset="utf8"):
+    def connetMySQL(self,host=None,user=None,pwd=None,dbname=None,port=3306,charset="utf8"):
         self.__conn = MySQLdb.connect(
             host=host,
             port=port,
             user=user,
             passwd=pwd,
+            db=dbname,
             charset=charset
         )
         if None != self.__conn:
