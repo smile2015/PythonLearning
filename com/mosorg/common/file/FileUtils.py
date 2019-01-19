@@ -30,7 +30,7 @@ class FileUtils:
 
     def open_file(self,file_path,mode=None):
         self.file = open(file_path, mode)
-        return self.file;
+        return self.file
 
     def close_file(self):
         self.file.close()
