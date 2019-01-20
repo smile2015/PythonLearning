@@ -47,6 +47,19 @@ class MySQLHelper:
         else:
             raise "Connect to database fail. [%s]"%host
 
+    def connetMySQLArgsByDict(self,args):
+        '''
+        参数使用字典方式传递。调用示例见Demo：PythonDemo\Demo\MySQLDemo06.py
+        :param args: 字典类型参数
+        :return: 
+        '''
+        self.__conn = MySQLdb.connect(**args)
+        if None != self.__conn:
+            print "Connect to database success.[%s]"%args["host"]
+            return self.__conn
+        else:
+            raise "Connect to database fail. [%s]"%args["host"]
+
     def getCursor(self):
         self.__cursor = self.__conn.cursor()
         return self.__cursor
